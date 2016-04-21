@@ -124,7 +124,7 @@ class User extends BaseEndpoint {
      * Checks whether the given username has an associated user on the Docebo system.
      *
      * @param string $username
-     * @return object
+     * @return boolean
      */
     public function usernameExists($username)
     {
@@ -137,14 +137,19 @@ class User extends BaseEndpoint {
 
         $response = $this->master->call($this->endpoints['check_username'], $headers, $parameters);
 
-		return $response->body;
+		if ( ! empty($response->body->success) && ! empty($response->body->email))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * Checks whether the given email has an associated user on the Docebo system.
      *
      * @param string $email
-     * @return object
+     * @return boolean
      */
     public function emailExists($email)
     {
@@ -157,7 +162,12 @@ class User extends BaseEndpoint {
 
         $response = $this->master->call($this->endpoints['check_username'], $headers, $parameters);
 
-		return $response->body;
+		if ( ! empty($response->body->success) && ! empty($response->body->email))
+        {
+            return true;
+        }
+
+        return false;
     }
 
 }
