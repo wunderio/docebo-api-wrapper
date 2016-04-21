@@ -1,0 +1,24 @@
+{
+    "name": "suru/doceboapiwrapper",
+    "description": "PHP Wrapper for Docebo REST API",
+    "license": "MIT",
+    "keywords": ["suru","docebo","doceboapiwrapper"],
+    "authors": [
+        {
+            "name": "Thomas Digby",
+            "email": "thomas@thomasdigby.co.uk"
+        }
+    ],
+    "require": {
+        "nesbot/carbon": "~1.14",
+        "beberlei/assert": "~2.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Suru\\Docebo\\DoceboApiWrapper\\": "src"
+        }
+    }
+}
