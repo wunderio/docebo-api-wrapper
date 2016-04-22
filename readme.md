@@ -6,15 +6,17 @@ A PHP wrapper for Docebo REST API. [https://www.docebo.com/lms-docebo-api-third-
 
 ### With Composer
 
-```
-$ composer require suru/doceboapiwrapper
-```
-
 ```json
 {
     "require": {
-        "suru/doceboapiwrapper": "~1.0"
-    }
+        "suru/doceboapiwrapper": "1.*"  
+	},
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/surupartners/docebo-api-wrapper"
+        }
+    ],
 }
 ```
 
