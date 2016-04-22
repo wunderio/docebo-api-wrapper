@@ -128,14 +128,7 @@ class User extends BaseEndpoint {
      */
     public function usernameExists($username)
     {
-        $headers = $this->master->getAccessTokenHeader();
-
-        $parameters = [
-            'userid' => $username,
-            'also_check_as_email' => false,
-        ];
-
-        $response = $this->master->call($this->endpoints['check_username'], $headers, $parameters);
+        $response = $this->rawCheckUsername($username, false);
 
 		if ( ! empty($response->body->success) && ! empty($response->body->email))
         {
@@ -153,14 +146,7 @@ class User extends BaseEndpoint {
      */
     public function emailExists($email)
     {
-        $headers = $this->master->getAccessTokenHeader();
-
-        $parameters = [
-            'userid' => $email,
-            'also_check_as_email' => true,
-        ];
-
-        $response = $this->master->call($this->endpoints['check_username'], $headers, $parameters);
+        $response = $this->rawCheckUsername($email, true);
 
 		if ( ! empty($response->body->success) && ! empty($response->body->email))
         {
@@ -168,6 +154,28 @@ class User extends BaseEndpoint {
         }
 
         return false;
+    }
+
+    /**
+     * Performs a raw call to the checkUsername endpoint and return the response body.
+     * Useful if you wish to retrieve info from the response rather than whether or not the username/email simply exists.
+     *
+     * @param string $username
+     * @param boolean $also_check_as_email
+     * @return object
+     */
+    public function rawCheckUsername($username, $also_check_as_email = false)
+    {
+        $headers = $this->master->getAccessTokenHeader();
+
+        $parameters = [
+            'userid' => $username,
+            'also_check_as_email' => $also_check_as_email,
+        ];
+
+        $response = $this->master->call($this->endpoints['check_username'], $headers, $parameters);
+
+		return $response->body;
     }
 
 }

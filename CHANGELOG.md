@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.2.0] - 2016-04-22
+### Added
+- Can now perform raw call to check username which will return the body content from the API. This is useful if you wish to access the information returned in the response, i.e. `firstname`, `lastname`, `email`.
+- Updated `usernameExists` and `emailExists` to make use of the raw method rather than build the query within themselves.
+
 ## [1.1.3] - 2016-04-22
 ### Fixed
 - Updated readme.md to show the correct way to load library via composer as it isn't yet registered with packagist.
