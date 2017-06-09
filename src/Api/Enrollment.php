@@ -1,6 +1,7 @@
 <?php
 
 namespace Suru\Docebo\DoceboApiWrapper\Api;
+use Suru\Docebo\DoceboApiWrapper\Models\Enrollment as ModelEnrollment;
 
 class Enrollment extends BaseEndpoint {
 
@@ -24,9 +25,13 @@ class Enrollment extends BaseEndpoint {
     $parameters = [
       'id_course' => $course_id,
     ];
+    $enrollments = [];
     $response = $this->master->call($this->endpoints['list'], $headers, $parameters);
-    
-    return $response->body;
+    foreach ($response->body->enrollments as $enrollment) {
+      $enrollments[] = new ModelEnrollment((array) $enrollment);
+    }
+
+    return $enrollments;
   }
 
 }
