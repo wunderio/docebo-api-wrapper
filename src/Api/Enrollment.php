@@ -15,7 +15,7 @@ class Enrollment extends BaseEndpoint {
   ];
 
   /**
-   * List enrollments, filered by user-defined criteria.
+   * List enrollments, filtered by user-defined criteria.
    *
    * Possible parameters:
    *
