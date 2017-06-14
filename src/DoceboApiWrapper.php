@@ -7,6 +7,7 @@ use Suru\Docebo\DoceboApiWrapper\Api\Course;
 use Suru\Docebo\DoceboApiWrapper\Api\Organization;
 use Suru\Docebo\DoceboApiWrapper\Api\User;
 use Suru\Docebo\DoceboApiWrapper\Api\Enrollment;
+use Suru\Docebo\DoceboApiWrapper\Api\LearningPlan;
 use Suru\Docebo\DoceboApiWrapper\Helpers\Helper;
 use Suru\Docebo\DoceboApiWrapper\Models\AccessToken;
 use Suru\Docebo\DoceboApiWrapper\Exceptions\DoceboWrapperException;
@@ -94,6 +95,14 @@ class DoceboApiWrapper {
     public function enrollment()
     {
       return new Enrollment($this);
+    }
+
+    /**
+     * @var DoceboApiWrapper\Api\LearningPlan
+     */
+    public function learningPlan()
+    {
+      return new LearningPlan($this);
     }
 
     /**
